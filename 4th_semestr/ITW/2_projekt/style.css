@@ -1,0 +1,454 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 4vh 0 0; /*posunutí o výšku navbaru*/
+  padding: 0;
+  font-family: sans-serif;
+  font-size: 17px;
+  overflow: overlay;  /*pruhledny scrollbar*/
+}
+
+body::-webkit-scrollbar { /*nastavení scrollbaru*/
+  width: 10px;
+  height: 5px;
+}
+
+
+body::-webkit-scrollbar-thumb { /*nastavení scrollbaru*/
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+.content {
+  margin: 0 auto;
+  width: 60%;
+}
+
+
+h2 {
+  color: #523213;
+  font-size: 30px;
+  margin: 0;
+  padding: 30px;
+  text-align: center;
+}
+
+header {
+  height: 100vh;
+  background: url(img/shrekHeader.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#headerLogo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#headerLogo img{
+  height: auto;
+  width: 30%;
+  min-width: 350px;
+}
+
+
+nav {
+  background-color: #B0C400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+}
+
+ nav ul {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+ }
+
+ nav li {
+   display: inline-flex;
+   padding: 10px;
+ }
+
+ nav li a {
+   text-decoration: none;
+   font-weight: bold;
+   font-size: 20px;
+   color: #523213;
+   transition-duration: 0.5s;
+   letter-spacing: 1px;
+ }
+
+ nav li a:hover {
+   color: #795A2D;
+   cursor: pointer;
+   transition-duration: 0.5s;
+ }
+
+/*----------------------------hlavní část--------------------------------------*/
+main {
+ height: auto;
+ background-color: #D3CCA5;
+}
+
+/*-----------------------------O mně------------------------------------------*/
+.AboutmeElem {
+  min-height: 350px;
+  height: auto;
+  width: 100%;
+  padding: 0;
+  border-top: 1px solid grey; /*cara pred kazdym usekem*/
+  transition-duration: 0.5s;
+}
+
+main .AboutmeElem:last-child {
+  border-bottom: 1px solid grey;  /*cara po poslednim usekem*/
+}
+
+.AboutmeElem:hover {
+  background-color: #C3BC95;
+  transition-duration: 0.5s;
+}
+
+.AboutmeElem h3 {
+   font-size: 25px;
+   padding-top: 10px;
+   margin-top: 0;
+}
+
+#AboutMe p  {
+  margin-top: 20px;
+  padding-bottom: 10px;
+}
+
+/*------------------------nastavení obrázků a mapy----------------------------*/
+.AboutmeElem img {
+  width: 300px;
+  height: auto;
+  transition-duration: 0.5s;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.AboutmeElem iframe {
+  margin-top: 20px;
+}
+
+#AboutMe :nth-child(2n + 1) img {
+  float: left;
+  margin-right: 50px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+#AboutMe :nth-child(2n) img, iframe {
+  float: right;
+  margin-left: 50px;
+  margin-right: 20px;
+}
+
+#AboutMe :nth-child(2n + 1) img:hover {
+  width: 350px;
+  height: auto;
+  transition-duration: 0.5s;
+}
+
+#AboutMe :nth-child(2n) img:hover {
+  width: 350px;
+  height: auto;
+  transition-duration: 0.5s;
+}
+
+#AboutMe :nth-child(2n + 1) p, h3 {
+  margin-right: 30px;
+  margin-left: 20px;
+}
+
+#AboutMe :nth-child(2n) p, h3 {
+  margin-left: 30px;
+  margin-right: 20px;
+}
+
+/*-----------------------------Fotky--------------------------------------*/
+#Photos {
+  min-height: 450px;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  border-bottom: 1px solid grey;
+}
+
+#Photos h2 {
+  width: 100%;
+}
+
+#Photos:hover {
+  background-color: #C3BC95;
+  transition-duration: 0.5s;
+}
+
+#Photos .PhotoContainer {
+  padding: 40px;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+#Photos .PhotoContainer img {
+  width: auto;
+  height: 300px;
+  border-radius: 5px;
+  transition-duration: 0.5s;
+}
+
+#Photos .PhotoContainer img:nth-child(2) {  /*srdicko*/
+  width: auto;
+  height: 50px;
+  position: absolute;
+  margin-top: 90px;
+  margin-left: -20px;
+  opacity: 0;
+  transition-duration: 0.5s;
+}
+
+#Photos .PhotoContainer img:first-child:hover + img { /*pri najeti na obrazek se zahaji animace*/
+  opacity: 0.9;
+  transform: scale(3);
+  transition-duration: 2s;
+}
+
+#Photos .PhotoContainer:hover :nth-child(2) { /*sdricko */
+  pointer-events: none; /* ponecha velikost obrazku pod strickem*/
+}
+
+#Photos .PhotoContainer img:first-child:hover {
+  width: auto;
+  height: 320px;
+  transition-duration: 0.5s;
+}
+
+/*-----------------------------Kontakt----------------------------------------*/
+#contact {
+ height: auto;
+ padding-bottom: 20px;
+}
+
+#contact h2 {
+ padding-left: 0px;
+ padding-right: 0px;
+ width: 100%;
+}
+
+#contact:hover {
+  background-color: #C3BC95;
+  transition-duration: 0.5s;
+}
+
+#contact .PhotoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 10px;
+}
+
+/*-----------------------------Shrek postavička-------------------------------*/
+#contactShrek img {
+  height: 350px;
+  width: auto;
+  padding: 20px;
+}
+
+#contactShrek blockquote {
+  background-color: #795A2D;
+  width: 100px;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+#contactShrek blockquote span{
+  font-weight: bold;
+}
+
+#contactShrek blockquote:after { /*trojuhelnik pro blockquote*/
+	content: "";
+  border-color:  transparent #795A2D transparent transparent;
+  position: absolute;
+  border-width: 30px 30px 40px 0;
+	border-style: solid;
+}
+
+/*--------------------------------formular------------------------------------*/
+#contactContainer {
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 5px;
+}
+
+#fname {
+  min-width: 100px;
+  width: 40%;
+  height: 20px;
+}
+
+#fname:focus {
+  outline: none;
+  border:1px solid grey;
+  box-shadow: 0 0 10px grey;
+}
+
+#lname {
+  min-width: 100px;
+  width: 40%;
+  height: 20px;
+}
+
+#lname:focus {
+  outline: none;
+  border:1px solid grey;
+  box-shadow: 0 0 10px grey;
+}
+
+#message {
+  min-width: 200px;
+  margin-top: 20px;
+  height: 250px;
+  width: 100%;
+  resize: none; /*zabrani meneni velikosti textoveho pole*/
+}
+
+#message:focus {
+  outline: none;
+  border:1px solid grey;
+  box-shadow: 0 0 10px grey;
+}
+
+#submit {
+  min-width: 50px;
+  margin-left: 40%;
+  width: 20%;
+}
+
+/*-----------------------------Sociální sítě----------------------------------*/
+#socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#socials img {
+  width: 100px;
+  height: auto;
+  border-radius: 50px;
+  filter: grayscale(100%);
+  transition-duration: 0.5s;
+  margin: 0 20px;
+}
+
+#socials img:hover{
+  filter: grayscale(0);
+  transition-duration: 0.5s;
+}
+
+/*-----------------------------footer----------------------------------------*/
+
+footer {
+  height: auto;
+  border-top: 1px solid grey;
+  background-color: #D3CCA5
+}
+
+footer h4{
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  margin: 0;
+}
+
+/*--------------------nastavení pro mobilní zařízení-------------------------*/
+@media screen and (max-width: 768px){
+
+ .content { /* obsah se roztáhne na celou šířku stránky*/
+   width: 100%;
+ }
+/*----------------------------O mě---------------------------------------*/
+ .AboutmeElem { /* nastavuje, aby se obsah díval pod sebe*/
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+ }
+
+ .AboutmeElem img {
+   margin-top: 20px 0;
+   width: 300px;
+   height: auto;
+ }
+
+ .AboutmeElem img:hover { /* rušení efektu hoveru*/
+   width: 300px;
+ }
+
+ #AboutMe :nth-child(2n + 1) img, iframe {
+   margin: 20px 0 auto;
+ }
+
+ #AboutMe :nth-child(2n) img {
+   margin: 20px 0 auto;
+ }
+
+ #AboutMe :nth-child(2n + 1) img:hover { /* rušení efektu hoveru*/
+   width: 300px;
+ }
+
+ #AboutMe :nth-child(2n) img:hover { /* rušení efektu hoveru*/
+   width: 300px;
+ }
+
+ #AboutMe * p, h3 {
+   margin: 0 auto;
+   text-align: center;
+ }
+
+/*----------------------------Kontakt---------------------------------------*/
+ #contact .PhotoContainer {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+ }
+
+ #contact .PhotoContainer img{
+   height: 400px;
+   width: auto;
+   padding: 20px;
+ }
+
+ #contact .PhotoContainer img:hover { /* rušení efektu hoveru*/
+   height: 400px;
+ }
+
+/*----------------------------Fotky---------------------------------------*/
+ #Photos .PhotoContainer img {
+   max-width: 350px;
+   height: auto
+ }
+
+ #Photos .PhotoContainer img:hover { /* rušení efektu hoveru*/
+   max-width: 350px;
+   height: auto
+ }
+}

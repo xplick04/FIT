@@ -1,0 +1,42 @@
+.Header {
+	text-align: center;
+}
+
+.Div {
+	display: flex;
+	flex-direction: column;
+}
+
+.ModalNew {
+	margin-left: 30%;
+}
+
+.UpperDiv {
+	width: 50%;
+}
+
+.LowerDiv {
+	width: 50%;
+}
+
+.Button {
+	width: 80%;
+}
+
+.Img {
+	width: 350px;
+	height: 350px;
+	object-fit: cover;
+}
+
+@media only screen and (max-width: 1300px) {
+	.ModalNew {
+		margin-left: 50px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.ModalNew {
+		margin-left: 0;
+	}
+}

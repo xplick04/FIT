@@ -1,0 +1,6 @@
+celkem bodu: 9/15 (speedrun)
+Komentář učitele k hodnocení:
+-1: nevhodne cislovani
+-2: nepouzite overlay/frames
+-2: nedostatency rozsah
+-1: nepresna slozitost operaci

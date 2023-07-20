@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>Projekt IIS</title>
+    <style type="text/css">
+    	table { border-collapse: collapse; }
+    	td, th { border: 1px solid black; padding: 0.3em 0.5em; text-align: left; }
+    	dt { font-weight: bold; margin-top: 0.5em; }
+    </style>
+</head>
+<body>
+
+<!-- Zkontrolujte prosím nastavení kódování v hlavičce dokumentu 
+     podle použitého editoru -->
+
+<h1>Zvířecí útulek</h1> <!-- Nahradte názvem svého zadání -->
+
+<dl>
+	<dt>Autoři</dt>
+	<dd>Maxim Plička <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
+	    <a href="mailto:xplick04@stud.fit.vutbr.cz">xplick04@stud.fit.vutbr.cz</a> -
+		Backend
+	</dd>
+	<dd>Jan Zdeněk <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
+	    <a href="mailto:xzdene01@stud.fit.vutbr.cz">xzdene01@stud.fit.vutbr.cz</a> - 
+		Backend + Frontend (každý má svoji verzi frontendu pro ITU)
+	</dd>
+  <dd>Tomáš Vitula <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
+	    <a href="mailto:xvitul03@stud.fit.vutbr.cz">xvitul03@stud.fit.vutbr.cz</a> - 
+		Backend
+	</dd>
+	<dt>URL aplikace</dt>
+	<dd><a href="https://animalshelter-iis.herokuapp.com/">https://animalshelter-iis.herokuapp.com/</a></dd>
+</dl>
+
+<h2>Uživatelé systému pro testování</h2>
+<table>
+<tr><th>Login</th><th>Heslo</th><th>Role</th></tr>
+<tr><td>admin</td><td>admin</td><td>Administrátor</td></tr>
+<tr><td>car</td><td>1234</td><td>Pečovatel</td></tr>
+<tr><td>vet</td><td>1234</td><td>Veterinář</td></tr>
+<tr><td>reg</td><td>1234</td><td>Registrovaný uživatel</td></tr>
+<tr><td>test</td><td>1234</td><td>Neověřený registrovaný uživatel</td></tr>
+</table>
+
+<h3>Video</h3>
+
+<a href="https://drive.google.com/drive/u/0/folders/1lYuyVSYDl_0FJDJZzyRvfszmRuvxWTFF">https://drive.google.com/drive/u/0/folders/1lYuyVSYDl_0FJDJZzyRvfszmRuvxWTFF</a> 
+
+<h2>Implementace</h2>
+<p>Celá aplikace je rozdělena na 2 části. Tyto dvě části byly nakonec spojeny do jedné, aby vznikla jedna spustitelná aplikace, kde "index.html" je rendrován jako tzv. template
+	do Django aplikace.
+</p>
+<h3>Django</h3>
+<p>Pro správné fungování aplikace využíváme REST API. V "urls.py" rozdělujeme přichozí požadavky na tzv. endpointy, které se starají o jejich obsloužení.
+	Tyto endpointy jsou implementovány pomocí funkcí v souborech "*views.py", kde tyto funkce komunikují s databází pomocí modelů a serializérů a následně vrací
+	vyžadovaná data v JSON formátu. Tyto data jsou dále zpracována v React aplikaci.
+</p>
+<h3>React</h3>
+<p>Tato frontendová aplikace komunikuje s api a zobrazuje přichozí JSON data v uživatelsky přívětivé podobě a umožňuje také měnit stav databáze pomocí grafického
+	uživatelského rozhraní. Pro vytváření požadavků na api využíváme modulu axios, který komunikaci výrazně zjednodušuje. 
+</p>
+<h3>Cloudinary</h3>
+<p>Jelikož heroku nepodporuje ukládání souborů přímo do souborů, tak využíváme služby Cloudinary, která se stará o ukládání souborů(v našem případě fotek).
+</p>
+
+<h3>JWT tokeny</h3>
+<p>Pro ověřování uživatelů vyuzíváme technologie JWT.
+</p>
+
+<h3>Databáze</h3>
+<img width="700px" src="https://cdn.discordapp.com/attachments/1023586253205155961/1046179247049412639/ER-diagram.png" alt="er-diagram"/>
+
+<h2>Instalace</h2>
+<ul>
+<li>pro hosting jsme si vybrali heroku, kde se postup instalace určuje pomocí souborů: "Procfile", "requirements.txt", "runtime.txt"</li>
+<li>softwarové požadavky se nachází v souboru "requirements.txt" a "package.json"</li>
+<li>pro databázový systém jsme zvolili Heroku Postgres, databáze se tvoří automaticky na základě modelů v Django aplikaci "api/models.py". Komunikace
+	s databází je implementována pomocí serializérů v "api/serializers.py" a funkcí v souborech "*views.py".
+</li>
+</ul>
+
+<h2>Známé problémy</h2>
+<p>Během testování aplikace jsme na žádné problémy nenarazili.</p>
+
+</body>
+</html>

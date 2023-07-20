@@ -1,0 +1,519 @@
+#!/bin/bash
+
+export POSSIXLY_CORRECT=YES
+export LC_NUMERIC=en_US.UTF-8
+
+helpText="PŘÍKAZ může být jeden z:
+         list-tick – výpis seznamu vyskytujících se burzovních symbolů, tzv. “tickerů”.
+         profit – výpis celkového zisku z uzavřených pozic.
+         pos – výpis hodnot aktuálně držených pozic seřazených sestupně dle hodnoty.
+         last-price – výpis poslední známé ceny pro každý ticker.
+         hist-ord – výpis histogramu počtu transakcí dle tickeru.
+         graph-pos – výpis grafu hodnot držených pozic dle tickeru.
+FILTR může být kombinace následujících:
+        -a DATETIME – after: jsou uvažovány pouze záznamy PO tomto datu (bez tohoto data). DATETIME je formátu YYYY-MM-DD HH:MM:SS.
+        -b DATETIME – before: jsou uvažovány pouze záznamy PŘED tímto datem (bez tohoto data).
+        -t TICKER – jsou uvažovány pouze záznamy odpovídající danému tickeru. Při více výskytech přepínače se bere množina všech uvedených tickerů.
+        -w WIDTH – u výpisu grafů nastavuje jejich šířku, tedy délku nejdelšího řádku na WIDTH. Tedy, WIDTH musí být kladné celé číslo. Více výskytů přepínače je chybné spuštění.
+        -h a --help vypíšou nápovědu s krátkým popisem každého příkazu a přepínače."
+timeFrom="0000-00-00 00:00:00"
+timeTo="9999-99-99 99:99:99"
+width=0
+widthCount=0
+widthFlag=0
+commandCounter=0
+
+function command_check {
+  if [ "$1" -eq 1 ]
+  then
+    echo "Bylo zadáno příliš mnoho příkazů"
+    exit 1
+  fi
+}
+#ARGUMENT HANDLERER
+while [ "$#" -gt 0 ]
+do
+  case "$1" in
+        #vstupní soubor
+        *.log)  #nahraje inputFile
+        inputFileL="$inputFileL $1"
+        log=1
+        shift
+        ;;
+        *.gz)  #nahraje inputFile
+        inputFileG="$inputFileG $1"
+        gzip=1
+        shift
+        ;;
+        #filtry:
+        -a) #after
+        timeFrom="$2"
+        shift
+        shift
+        ;;
+        -b) #before
+        timeTo="$2"
+        shift
+        shift
+        ;;
+        -t) #filtruje pouze prikazy s tickerem
+        ticker="$ticker $2"
+        shift
+        shift
+        ;;
+        -w)
+        if [ "$widthCount" -eq 1 ]
+        then
+          echo "Parametr width musí být zadan pouze jednou"
+          exit 1
+        fi
+        width="$2"
+        if [ "$width" -le 0 ]
+        then
+          echo "Parametr width musí být kladné číslo"
+          exit 1
+        fi
+        shift
+        shift
+        widthCount=1
+        ;;
+        -h | --help)
+        echo "$helpText"
+        exit 0
+        shift
+        ;;
+        #prikazy:(jenom jeden)
+        list-tick)
+        command_check $commandCounter
+        commandCounter=1
+        listTick=1
+        shift
+        ;;
+        profit)
+        command_check $commandCounter
+        commandCounter=1
+        profit=1
+        shift
+        ;;
+        pos)
+        command_check $commandCounter
+        commandCounter=1
+        pos=1
+        shift
+        ;;
+        last-price)
+        command_check $commandCounter
+        commandCounter=1
+        lastPrice=1
+        shift
+        ;;
+        hist-ord)
+        command_check $commandCounter
+        commandCounter=1
+        histOrd=1
+        shift
+        ;;
+        graph-pos)
+        command_check $commandCounter
+        commandCounter=1
+        graphPos=1
+        shift
+        ;;
+        *)
+        echo "špatně zadaný parametr"
+        shift
+        exit 1
+        ;;
+  esac
+done
+#uživatel nezadá input, čte ze standartního vstupu
+if [ "$inputFileL" == "" ] && [ "$inputFileG" == "" ]
+then
+  #pokud je stdin prázdný
+  if [ -t 0 ]
+  then
+    echo "Vstup nebyl nalezen"
+    exit 1
+  fi
+  filterOut=$(cat /dev/stdin | \
+  awk \
+  -F';' \
+  -v ticker="$ticker" \
+  -v timeFrom="$timeFrom" \
+  -v timeTo="$timeTo" \
+  '{
+  if(timeFrom < $1 && timeTo > $1)
+  {
+    split(ticker,tickerArray," ")
+    for(x in tickerArray)
+    {
+      if($2 == tickerArray[x])
+      {
+        print
+      }
+    }
+    if(ticker == "")
+    {
+      print
+    }
+  }
+  }')
+fi
+
+if [ "$gzip" == "1" ]
+then
+  #hahraje do vstupu z gzip arrraye
+  filterOutG=$(zcat $inputFileG | \
+  awk \
+  -F';' \
+  -v ticker="$ticker" \
+  -v timeFrom="$timeFrom" \
+  -v timeTo="$timeTo" \
+  '{
+  if(timeFrom < $1 && timeTo > $1)
+  {
+    split(ticker,tickerArray," ")
+    for(x in tickerArray)
+    {
+      if($2 == tickerArray[x])
+      {
+        print
+      }
+    }
+    if(ticker == "")
+    {
+      print
+    }
+  }
+  }')
+  filterOut="$filterOut$filterOutG"
+fi
+
+if [ "$log" == "1" ]
+then
+  #načte vstpní soubor z .log arraye
+  filterOutL=$(cat $inputFileL | \
+  awk \
+  -F';' \
+  -v ticker="$ticker" \
+  -v timeFrom="$timeFrom" \
+  -v timeTo="$timeTo" \
+  '{
+  if(timeFrom < $1 && timeTo > $1)
+  {
+    split(ticker,tickerArray," ")
+    for(x in tickerArray)
+    {
+      if($2 == tickerArray[x])
+      {
+        print
+      }
+    }
+    if(ticker == "")
+    {
+      print
+    }
+  }
+  }')
+  filterOut="$filterOut$filterOutL"
+fi
+
+if [ "$listTick" ]
+then
+  final=$(echo "$filterOut" | \
+  awk \
+  -F';' \
+  '{
+    names[$2] = $2
+  }
+  END {
+    for(x in names)
+    {
+      print names[x]
+    }
+  }')
+  echo "$final" | sort -k1
+  exit 0
+fi
+
+if [ "$profit" ]
+then
+  final=$(echo "$filterOut" | \
+  awk \
+  -F';' \
+  -v profit=0 \
+  -v OFMT='%.2f' \
+  '{
+    if($3 == "sell")
+    {
+      profit += ($4*$6)
+    }
+    if($3 == "buy")
+    {
+      profit -= ($4*$6)
+    }
+  }
+  END{
+      printf ("%.2f\n", profit)
+  }')
+  echo "$final"
+  exit 0
+fi
+
+if [ "$pos" ]
+then
+  final=$(echo "$filterOut" | \
+  awk \
+  -F';' \
+  -v OFMT='%.2f' \
+  '{
+  do{
+    if($3 == "sell")
+    {
+      names[$2] -= $6
+      values[$2] = $4
+    }
+    if($3 == "buy")
+    {
+      names[$2] += $6
+      values[$2] = $4
+    }
+  }
+  while(name in names)
+  }
+  END{
+    for(x in names)
+    {
+      for(y in values)
+      {
+        if(x == y)
+        {
+          names[x] = names[x]*values[y]
+          if(length(int(names[x])) > longest)
+          {
+            longest = length(int(names[x]))
+          }
+        }
+      }
+    }
+    for(x in names)
+    {
+      printf x
+      for(j = 1; j < (11 - length(x)); j++)
+      {
+      printf " "
+      }
+      printf ": "
+      for(i = 0; i < longest-length(int(names[x])); i++)
+      {
+        printf " "
+      }
+      printf ("%.2f\n", names[x])
+    }
+  }')
+  echo "$final" | sort -rn -k3
+  exit 0
+fi
+
+if [ "$lastPrice" ]
+then
+  final=$(echo "$filterOut" | \
+  awk \
+  -F';' \
+  -v OFMT='%.2f' \
+  '{
+    names[$2] = $4
+    for(name in names)
+    {
+        names[$2] = $4
+    }
+  }
+    END{
+      for(x in names)
+      {
+        if(length(names[x]) > longest)
+        {
+          longest = length(names[x])
+        }
+      }
+      for(x in names)
+      {
+        printf x
+        for(j = 1; j < (11 - length(x)); j++)
+        {
+        printf " "
+        }
+        printf ": "
+        for(i = 0; i < longest-length(names[x]); i++)
+        {
+          printf " "
+        }
+        print names[x]
+      }
+  }')
+  echo "$final" | sort -k1
+  exit 0
+fi
+
+if [ "$histOrd" ]
+then
+  if [ "$width" -eq 0 ]
+  then
+    widthFlag=1
+  fi
+  final=$(echo "$filterOut" | \
+  awk \
+  -F';' \
+  -v width=$width \
+  -v widthFlag=$widthFlag \
+  -v OFMT='%.2f' \
+  '{
+    do
+      names[$2] += 1
+    while(name in names)
+  }
+    END{
+      for(y in names)
+      {
+        if(biggestValue < names[y])
+        {
+          biggestValue = names[y]
+        }
+      }
+      if(widthFlag == 0)
+      {
+        for(x in names)
+        {
+          names[x] = (names[x]/biggestValue)*width
+        }
+      }
+      for(x in names)
+      {
+        printf x
+        for(j = 1; j < (11 - length(x)); j++)
+        {
+        printf " "
+        }
+        printf ":"
+        if(int(names[x]) != 0)    #tiskne mezeru za ":"
+        {
+            printf " "
+        }
+        for(i = 0; i < int(names[x]); i++)
+        {
+          printf "#"
+        }
+        print ""
+      }
+  }')
+  echo "$final" | sort -k1
+  exit 0
+fi
+
+if [ "$graphPos" ]
+then
+  #pokud uživatel nezadá width
+  if [ "$width" -eq 0 ]
+  then
+    width=1000
+    widthFlag=1
+  fi
+  final=$(echo "$filterOut" | \
+  awk \
+  -F';' \
+  -v width=$width \
+  -v widthFlag=$widthFlag \
+  -v OFMT='%.2f' \
+  '{
+    do{
+      if($3 == "sell")
+      {
+        names[$2] -= $6
+        values[$2] = $4
+      }
+      if($3 == "buy")
+      {
+        names[$2] += $6
+        values[$2] = $4
+      }
+    }
+    while(name in names)
+  }END{
+    for(x in names)
+    {
+      for(y in values)
+      {
+        if(x == y)
+        {
+          names[x] = names[x]*values[y]
+        }
+      }
+    }
+    for(x in names)
+    {
+      if(names[x] < 0)
+      {
+        names[x] = -names[x]
+        if(biggestValue < names[x])
+        {
+          biggestValue = names[x]
+        }
+        names[x] = -names[x]
+      }
+      else
+      {
+        if(biggestValue < names[x])
+        {
+          biggestValue = names[x]
+        }
+      }
+    }
+    if(widthFlag == 1)
+    {
+      biggestValue = 1000
+      width = 1
+    }
+    for(y in names)
+    {
+      printf y
+      for(j = 1; j < (11 - length(y)); j++)
+      {
+      printf " "
+      }
+      printf ":"
+      if(names[y] < 0)
+      {
+        names[y] = -names[y]
+        negFlag = 1
+      }
+      count = (names[y]*width)/biggestValue
+      if(int(count) != 0)    #tiskne mezeru za ":"
+      {
+          printf " "
+      }
+      for(i=0; i < int(count); i++)
+      {
+        if(negFlag == 1)
+        {
+          printf "!"
+        }
+        if(negFlag == 0)
+        {
+          printf "#"
+        }
+      }
+      print ""
+      negFlag = 0
+    }
+  }')
+  echo "$final" | sort -k1
+  exit 0
+fi
+
+if [ "$commandCounter" == "0" ]
+then
+    echo "$filterOut"
+    exit 0
+fi
+
+exit 0

@@ -1,0 +1,27 @@
+.Dark {
+	color: #40818A;
+}
+
+.Light {
+	color: #77C9D4;
+}
+
+.White {
+	color: white;
+}
+
+.DarkHover:hover {
+	color: #40818A;
+}
+
+.LightHover:hover {
+	color: #77C9D4;
+}
+
+.BgDark {
+	background-color: #40818A;
+}
+
+.BgLight {
+	background-color: #77C9D4;
+}

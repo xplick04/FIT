@@ -1,0 +1,67 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2cm,text={17cm,24cm},top=3cm]{geometry}
+\usepackage[czech]{babel}
+\usepackage[unicode, hidelinks]{hyperref}
+\usepackage{times}
+
+
+\begin{document}
+\begin{titlepage}
+\begin{center}
+\huge
+\textsc{VYSOKÉ UČENÍ TECHNICKÉ V BRNĚ\\
+FAKULTA INFORMAČNÍCH TECHNOLOGIÍ
+}
+\vspace{\stretch{0,381966}}
+\\
+\large
+Typografie a publikovaní – 4. projekt\\
+\LARGE
+Bibliografické citace 
+\vspace{\stretch{0,618034}}
+\end{center}
+{\large \today \hfill
+Maxim Plička(xplick04)}
+\end{titlepage}
+
+\section{\LaTeX}
+Je maker balík programu \TeX, se kterým můžeme vytvářet různé texty. Tyto díla můžeme upravovat pomocí různých předdefinovaných balíčků. \LaTeX~je spíše určen pro rozsáhlejší a komplexnější dokumenty viz \cite{pavelka}. Podbrobněji si můžeme o \LaTeX u přečíst \cite{Simecek}, nebo také \cite{Davidek}.
+
+\subsection{Hlavní výhody a nevýhody}
+\textbf{Výhody:}
+\begin{itemize}
+    \item Výsledná kvalita dokumentu.
+    \item Nezávislost na OS.
+    \item Lze bezplatně využívat.
+\end{itemize}
+\textbf{Nevýhody:}
+\begin{itemize}
+    \item Čas, který musíte vynaložit pro naučení se \LaTeX u.\footnote{Pokud máte zájem naučit se sázet v \LaTeX u, můžete tak učinit zde\cite{Rybicka}}
+    \item Latex není \uv{WYSIWYG}, tudíž neuvidíte změny v textu dynamicky.
+\end{itemize}
+
+
+\subsection{Typy editorů, které můžeme pro \LaTeX~využívat}
+\begin{itemize}
+    \item \textbf{Offilne editory} -- musíme je nainstalovat na počítač a následně s nimi můžeme pracovat. Představu o těchto editorech by vám mohl vytvořit \cite{Stastny}.
+    \item \textbf{Online editory} -- stačí se zaregistrovat a následně se vám na účet ukládají veškeré úpravy, většinou v sobě mají už zabudovaný make. O tomto téma se více zabývá \cite{Sokol}.
+    \item \textbf{Pomocné editory pro \LaTeX} -- tyto editory lze využít pro ulehčení práce a vygenerování kódu do \LaTeX u, aniž byste museli napsat samotný kód viz \cite{oksuzozcan}.
+\end{itemize}
+\subsection{Sazba matematických výrazů}
+Sazba matematických výrazů v latexu je velmi propracovaná, proto toto prostředí začal nedávno používat i známější Word viz \cite{Matthews}. Pro sazbu matematických výrazů se nejčastěji využívá \LaTeX ový mód \texttt{math} a \texttt{displaymath}, o hlavních rozdílech se můžete dočíst v \cite{Olsak}.
+Dále můžeme využít také například matematické prostředí \texttt{eqnarray}, které automaticky vytvoří číslované a zarovnané výrazy. Při sázení těchto výrazů by Vám mohlo pomoci \cite{Gratzer}.
+
+Ukázka \texttt{eqnarray}:
+
+\begin{eqnarray}
+    \int_b^a g(x)~\textnormal{d}x & = & - \int\limits_a^b f(x)~\textnormal{d}x
+\end{eqnarray}
+
+\newpage
+\renewcommand{\refname}{Použité zdroje}
+\bibliographystyle{czechiso}
+\bibliography{proj4}
+
+
+\end{document}

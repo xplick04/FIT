@@ -1,0 +1,4 @@
+FLAGS= -std=gnu99 -Wall -Wextra -Werror -pedantic -pthread -lrt
+
+proj2 : proj2.c
+	gcc $(FLAGS) proj2.c -o proj2

@@ -1,0 +1,14 @@
+.Card {
+	height: 100%;
+}
+
+.Center {
+	text-align: center;
+}
+
+@media only screen and (max-width: 991px) {
+	.Row {
+		flex-direction: column;
+		margin: 0 !important;
+	}
+}

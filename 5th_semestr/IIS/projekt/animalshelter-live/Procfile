@@ -1,0 +1,2 @@
+release: python manage.py migrate
+web: gunicorn animal_shelter_backend.wsgi --log-file -

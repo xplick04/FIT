@@ -1,0 +1,24 @@
+input[type=text] {
+	color: #40818A;
+	border-color: #40818A;
+}
+
+input[type=date] {
+	color: #40818A;
+	border-color: #40818A;
+}
+
+input[type=time] {
+	color: #40818A;
+	border-color: #40818A;
+}
+
+input[type=password] {
+	color: #40818A;
+	border-color: #40818A;
+}
+
+.Select {
+	color: #40818A;
+	border-color: #40818A;
+}

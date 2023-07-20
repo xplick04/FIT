@@ -1,0 +1,758 @@
+/*
+ * Login: xplick04
+ *
+ * Doplnte sve reseni.
+ *
+ * Nezapomente pridat strucne hromadne komentare pro pravidla jednotlivych sekci
+ * a pro netrivialni useky kodu (napr. bubliny v sekci #refs)
+ */
+
+ body::-webkit-scrollbar {
+   width: 5px;
+   height: 5px;
+ }
+
+ body::-webkit-scrollbar-thumb {
+   background-color: darkgrey;
+   outline: 1px solid slategrey;
+ }
+
+@media screen and (max-width: 768px){
+ html{
+     overflow: auto;  /*pri nizsich velikostech se zobrazi horizontalni scrollbar*/
+ }
+}
+
+body  {
+  margin: 0;
+  padding: 0;
+  font-family: 'PT Sans', 'Special Elite';  /*pouzity font pisma*/
+  font-size: 14px;  /*zakladni velikost mensiho pisma*/
+  line-height: 1.7; /*vyska radku*/
+  background-color: black;
+  overflow-x: hidden;
+}
+
+section {
+	width: 100vw;
+	background-color: white;
+  padding-top: 60px;  /*horni a spodni odsazeni sekce*/
+  padding-bottom: 80px; /*horni a spodni odsazeni sekce*/
+}
+
+a {
+  text-decoration: none;
+}
+
+h2 {
+  font-size: 40px;  /*nadpis druhe urovne 40px(vetsi)*/
+}
+
+h3  {
+  font-size: 24px;  /*nadpis treti urovne 40px*/
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 1200px;  /**/
+  min-width: 768px; /**/
+	padding-left: 20px;  /*leve a prave odsazeni stranky*/
+	padding-right: 20px; /*leve a prave odsazeni stranky*/
+}
+/*-----------------------header--------------------------------------------*/
+header {
+  background-image: url(../img/header.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+	background-size: cover;
+  width: 100vw;
+  height: 100vh;  /*velikost viewportu*/
+  min-height: 400px;  /*minimalne 400px*/
+}
+
+#header-menu {
+  color: #f7f7f7;
+  padding-top: 10px; /*horni okraj 10px*/
+}
+
+#header-menu div,span{
+	margin: 10px;  /*vzdalenost mezi polozkami 10px*/
+}
+
+#header-menu a {
+  color: #4d4d4d;
+}
+
+#header-menu a:hover {
+  color: white;
+  transition-duration: 0.5s;  /*doba animace*/
+}
+
+#header-menu div span i {
+  color: steelblue;
+}
+
+#networks span i:hover  {
+  color: white;
+  transition-duration: 0.5s;  /*doba animace*/
+}
+
+#logo {
+  text-align: left;
+  font-family: "Special Elite";
+  color: steelblue;
+  font-size: 25px;  /*pismo 25px*/
+  display: inline-block;
+  width: 30%;
+}
+
+#logo a  {
+  color: steelblue
+}
+
+#contacts  {
+  font-size: 25px;
+  color: #4d4d4d;
+  display: inline-block;
+  float: right;
+  text-align: right;
+  white-space: nowrap;  /*oddela linebreak pri mensich velikostech*/
+}
+
+#contact i {
+  margin-right: 10px;
+}
+
+#networks  {
+  display: inline-block;
+	float: right;
+  text-align: right;
+  white-space: nowrap;  /*oddela linebreak pri mensich velikostech*/
+  width: 30%;
+}
+
+#networks i{
+  font-size: 25px;
+}
+
+#navigation  {
+  font-size: 13px;  /*pismo 13px*/
+  display: inline-block;
+  letter-spacing: .05rem; /*mezera mezi pismeny 0.05em*/
+  padding: 5px 7.5px 0px;  /*top left&right bottom*/
+  width: 40%;
+  float: left;
+  white-space: nowrap;  /*oddela linebreak pri mensich velikostech*/
+}
+
+#navigation ul li a {
+  padding: 5px 15px;  /*vycpavka 5px vertikalne 15px horizontalne*/
+  text-transform: uppercase;
+}
+
+#navigation ul li a:hover{
+  border: 1px solid;  /*ramecek 1px*/
+  transition-duration: 0.5s;  /*doba animace*/
+}
+
+header ul li  {
+  display: inline;
+}
+
+header ul {
+  margin: 0;
+  padding: 0;
+}
+
+#header-title {
+  margin-top: calc(66vh - 72.5px);  /* 2/3stranky - headermenu height */
+}
+
+#header-title h1 {
+  font-size: 64px;  /*pismo 64px*/
+  color: white; /*pismo white*/
+  margin-bottom: 20px; /*odsazeni zespodu 20px*/
+  margin-left: 20px;  /*odsazeni zleva 20px*/
+}
+
+header #get-started {
+  font-size: 18px;  /*vetsi pismo*/
+  padding: 20px;  /*vycpavka 20px*/
+  border: 2px solid;  /*ramecek 2px*/
+  border-radius: 15px;  /*zaobleni 15px*/
+  color: #4d4d4d;
+  width: fit-content;
+  margin-left: 20px;
+}
+
+header #get-started a {
+  color: #4d4d4d;
+}
+
+header #get-started:hover {
+  background-color: steelblue;
+  transition-duration: 0.5s;  /*doba animace*/
+  border-color: steelblue;
+}
+
+/*-----------------------services--------------------------------------------*/
+
+#services .content {
+  text-align: center;
+}
+
+#services .content > p:first-of-type{
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: grey;
+  font-size: 18px;
+}
+
+#services h2 {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+#services .content > div:first-of-type {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-auto-rows: auto auto;  /*dovoli pridat prvky*/
+  grid-row-gap: 40px; /*mezera mezi kartami 40px*/
+  grid-column-gap: 40px;
+  width: 640px;
+}
+
+.services-column  {
+  width: 300px;
+}
+
+.services-card  {
+  display: flex;
+  align-items: center;
+	flex-direction: column;
+	flex-wrap: wrap;
+	text-align: center;
+  width: 300px; /*sirka karty 300px*/
+  height: auto;
+  box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.1);  /*stin*/
+  border-radius: 5px;
+  border: 1px solid;  /*cara ramecku*/
+  border-color: #f7f7f7;
+}
+
+.services-card div {
+  height: 50px; /*velikost obrazku*/
+  width: auto;
+  padding: 20px;
+}
+
+.services-card h3 {
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.services-card p {
+  color: #bfbfbf;
+  margin: 0;
+  padding-bottom: 10px;
+}
+
+.services-card img:first-child {
+  padding: 5px; /*vycpavka 5px*/
+  color: steelblue;
+  border: solid;
+  border-radius: 5px;
+  width: 50px;
+  height: auto;
+  position:absolute;
+}
+
+.services-card img:nth-child(2) {
+  padding: 5px; /*vycpavka 5px*/
+  width: 50px;
+  height: auto;
+  opacity: 0;
+  color: steelblue;
+  border: solid;
+  border-radius: 5px;
+}
+
+.services-card:hover img:nth-child(2) {
+  opacity: 1;
+  transition-duration: 0.5s;  /*doba animace*/
+  background-color: steelblue;
+}
+
+.services-card:hover img:first-child {
+  opacity: 0;
+  transition-duration: 0.5s;  /*doba animace*/
+}
+
+.services-card:hover  h3 {
+  color: steelblue;
+  transition-duration: 0.5s;
+}
+
+.services-card:hover  {
+  box-shadow: 0px 0px 5px 5px steelblue;  /*stin*/
+  transition-duration: 0.5s;  /*doba animace*/
+}
+
+/*---------------------------about-------------------------------------------*/
+
+#about {
+  background-color: #f7f7f7;
+}
+
+#about h2 {
+	text-align: left;
+  margin-top: 20px;
+}
+
+#about p  {
+  margin-top: 20px;
+  color: grey;
+  font-size: 18px;
+}
+
+#about .content img{
+  width: 40%; /*velikost obrazku 40% pred najetim*/
+  height: auto;
+  margin-bottom: 40px;  /*vertikalni mezera*/
+  border-radius: 5px;
+}
+
+#about .content img:hover{
+  width: 50%; /*velikost obrazku 50% po najeti*/
+  height: auto;
+  transition-duration: 0.5s;  /*doba animace*/
+}
+
+#about .content :nth-child(2n + 1) img{
+  float: left;
+  margin-right: 80px; /*horizontalni mezera*/
+}
+
+#about .content :nth-child(2n) img{
+  float: right;
+  margin-left: 80px;  /*horizontalni mezera*/
+}
+
+#about .content .about-item {
+  height: 400px;
+  width: 100%;
+}
+
+/*---------------------------team-------------------------------------------*/
+
+#team {
+  text-align: center;
+  border-bottom: dashed;
+  border-color: grey;
+}
+
+#team .content  {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#team .content h2 {
+  width: 100%;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#team .content h3 {
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+#team .content h4 {
+  font-size: 18px;
+  color: grey;
+  margin: 0px;
+}
+
+#team .content p {
+  margin-top: 0px;
+}
+
+.team-card img  {
+  border-radius: 5px 5px 0px 0px;
+}
+
+.team-card  {
+  display: flex;
+  flex-direction: column;
+  width: 250px; /*karty maji stejnou sirku*/
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px 1px #000000;
+  margin-left: 10px;  /*mezera mezi kartami 20px*/
+  margin-right: 10px; /*mezera mezi kartami 20px*/
+  margin-top: 20px;
+}
+
+.team-card h4 {
+  color: #4d4d4d;
+}
+
+.team-card p:last-child {
+  color: #bfbfbf;
+}
+
+.team-card:hover  {
+  box-shadow: 0px 0px 4px 1px steelblue;
+  transition-duration: 0.5s;  /*doba animace*/
+}
+
+.team-card:hover h3 {
+  color:steelblue;
+  transition-duration: 0.5s;  /*doba animace*/
+}
+/*--------------------------stats-------------------------------------------*/
+
+#stats .content {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.stats-card  {
+  color: white;
+  width: 25%; /*karty maji stejnou sirku*/
+  max-width: 300px; /*maximalni sirka 300px*/
+  height: auto;
+  background-color: #4d4d4d;
+  text-align: center;
+  border-radius: 5px;
+  margin: 0 10px; /*mezera mezi kartami 20px*/
+}
+
+.stats-card i {
+  font-size: 32px;  /*velikost pisma ikonky*/
+  color: steelblue;
+  background-color: white;
+  border-radius: 30px;
+  padding: 10px;
+  margin-top: -20px;
+}
+
+.stats-card h3, p {
+  margin: 0;
+  padding: 5px;
+}
+
+.stats-card p {
+  color: #bfbfbf;
+}
+
+.stats-card:hover {
+  background-color: steelblue;
+  transition-duration: 0.5s;  /*doba animace*/
+}
+
+/*--------------------------price-------------------------------------------*/
+
+#price  {
+  background-color: #f7f7f7;
+}
+
+#price .content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#price .content h2{
+  width: 100%;
+  text-align: center;
+}
+
+#price table {
+  width: 80%; /*sirka tabulky 80%*/
+  margin-left: auto;
+  margin-right: auto;
+  border-spacing: 0px 20px; /*mezera mezi radky*/
+}
+
+#price table thead {
+  border: solid;
+}
+
+#price ul li:first-child{
+  list-style: none;
+  font-weight: bold;
+}
+
+#price ul {
+  line-height: 30px;
+  list-style-position: inside;
+}
+
+#price table td {
+  padding: 20px;  /*vycpavka radku*/
+}
+
+#price table th {
+  text-align: left;
+  padding: 20px;  /*vycpavka radku*/
+}
+
+#price table tbody {
+  border: solid;
+}
+
+#price table tbody tr {
+  box-shadow: 0px 1px 0px steelblue, 0px -1px 0px steelblue;
+  outline: dashed 2px;
+  outline-color: #f7f7f7;
+  color: #898989;
+}
+
+#price table tbody tr:hover {
+  background-color: white;
+  transition-duration: 0.5s;  /*doba animace*/
+}
+
+#price table button {
+  border: solid 2px;
+  background-color: #f7f7f7;
+  border-color: steelblue;
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 20px;  /*vycpavka button*/
+}
+
+#price table button:hover {
+  color: white;
+  border-color: steelblue;
+  background-color: steelblue;
+  transition-duration: 0.5s;  /*doba animace*/
+}
+
+/*--------------------------refs-------------------------------------------*/
+
+#refs  {
+  border-bottom: dashed;
+  border-color: grey;
+}
+
+#refs .content {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.refs-card  {
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 30%; /*karty maji stejnou sirku*/
+  max-width: 400px; /*maximalni sirka 400px*/
+}
+
+.refs-card h3 {
+  color: #bfbfbf;
+  font-size: 18px;
+}
+
+.refs-card img {
+  width: 60px;  /*velikost obrazku 60px*/
+  height: auto; /*velikost obrazku 60px*/
+  border-radius: 30px;
+  border-color: white;
+  border: solid white;
+}
+
+.refs-card blockquote {
+    background-color: #4d4d4d;
+    height: auto;
+    padding: 10px;
+    width: 270px;
+    border-radius: 5px;
+    display: inline-flex;
+    color: white;
+}
+
+.refs-card blockquote:hover {
+  background-color: steelblue;
+  transition-duration: 0.5s;  /*doba animace*/
+}
+
+.refs-card blockquote:hover:before  {
+  color: white;
+  transition-duration: 0.5s;  /*doba animace*/
+}
+
+.refs-card blockquote:hover:after {
+  border-color: steelblue transparent transparent transparent !important;
+  transition-duration: 0.5s;  /*doba animace*/
+}
+
+blockquote:before {
+  content: '"';
+  color: steelblue;
+  font-style: italic;
+  font-size: 7em;
+  height: 40px;
+  display: inline-block;
+  margin-top: -30px;
+}
+
+.refs-card:first-child blockquote:after { /*trojuhelnik 1. bublina*/
+	content: "";
+  border-color: #4d4d4d transparent transparent transparent;
+  position: absolute;
+  border-width: 40px 30px 0 0;
+	border-style: solid;
+	margin-top: 50px;
+	margin-left: 50px;
+}
+
+.refs-card:nth-child(2) blockquote:after { /*trojuhelnik 2. bublina*/
+	content: "";
+  border-color: #4d4d4d transparent transparent transparent;
+  position: absolute;
+  border-width: 40px 30px 0 0;
+	border-style: solid;
+	margin-top: 60px;
+	margin-left: 50px;
+}
+
+.refs-card blockquote span  {
+  display: inline-flex;
+	align-items: center;
+}
+
+.refs-card figure {
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.refs-card figure h3{
+  padding-left: 15px;
+}
+/*TODO prechody*/
+/*--------------------------contact-------------------------------------------*/
+
+#contact  {
+  padding: 40px 0px; /*horni a spodni odsazeni sekce je 40px*/
+}
+
+#contact .content {
+  display:  flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+#contact h2 {
+  width: 100%;
+  padding-bottom: 20px;
+  text-transform: uppercase;
+}
+
+#contact #map {
+  width: 40%;
+  height: 400px;  /*vyska mapy 400px*/
+  padding-right: 20px;
+}
+
+#contact form {
+  width: 40%;
+  height: 390px;
+  padding-left: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#contact form > * {
+  margin-top: 10px;
+  padding: 10px; /*vycpavka vstupnich polozek 10px*/
+  border: 2px solid steelblue;
+  border-radius: 5px;
+}
+
+#contact form input:invalid:not(:last-child) {
+  color: red; /*text nevalidniho vstupu*/
+}
+
+#contact form input:focus:not(:last-child) {
+  border: 2px solid green;
+  border-radius: 5px;
+  outline: none;
+  color: steelblue;
+}
+
+#contact-name {
+  width: calc(50% - 34px); /*border-left-right, margin, padding */
+  height: auto;
+  margin-right: 10px; /*mezera mezi vstupnimi polozkami 20px*/
+  color: steelblue;
+}
+
+#contact-email  {
+  width: calc(50% - 34px);  /*border-left-right, margin, padding */
+  height: auto;
+  margin-left: 10px;  /*mezera mezi vstupnimi polozkami 20px*/
+  color: steelblue;
+}
+
+#contact-subject {
+  width: 100%;
+  height: auto;
+  color: steelblue;
+}
+
+#contact-message {
+  width: 100%;
+  resize: none;
+  color: steelblue;
+}
+
+#contact form textarea:focus {
+  border: 2px solid green;
+  border-radius: 5px;
+  outline: none;
+  color: steelblue;
+  transition-duration: 0.5s;  /*doba animace*/
+}
+
+#contact-submit {
+  width: 40%;
+  background-color: steelblue;
+  color: white;
+  border: 2px solid steelblue;
+  border-radius: 5px;
+}
+
+#contact-submit:hover {
+  background-color: green;  /*barva tlacitka po najeti kurzorem*/
+  border: 2px solid green;
+  transition-duration: 0.5s;  /*doba animace*/
+}
+
+/*--------------------------footer-------------------------------------------*/
+
+#footer {
+  padding: 40px 0px; /*horni a spodni odsazeni sekce je 40px*/
+  background-color: black;
+  height: 5vh;
+}
+
+#footer .content  {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  color: grey;
+}
+
+#footer a {
+  color: steelblue;
+}

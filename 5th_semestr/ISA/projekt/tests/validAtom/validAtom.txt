@@ -1,0 +1,2 @@
+https://xkcd.com:443/atom.xml
+https://what-if.xkcd.com/feed.atom

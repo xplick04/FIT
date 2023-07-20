@@ -1,0 +1,275 @@
+7.7: celkem bodu
+
+====== Prehled hodnoceni ==========
+1: hezne formatovani kodu
+0.5: rozdeleni do funkci
+-2: pouzito goto
+-0.5: globalni promenne
+0.5:ok: arow
+0.5:ok: irow 1
+0.5:ok: drow 1
+0.5:ok: drows 2 3
+0.5:ok: icol 1
+0.5:ok: acol
+0.5:ok: dcol 1
+0.5:ok: dcols 2 3
+0.5:ok: cset 1 X
+0.5:ok: tolower 2
+0.5:ok: toupper 3
+0:spatne: copy 1 3
+0:spatne: swap 1 3
+0:spatne: move 3 1
+0.5:ok: move 1 3
+0:spatne: move 2 2
+0.4:ok: int 1
+0.4:ok: round 2
+0:spatne: int 2
+0:spatne: round 3
+0.5:ok: rows 1 2 cset 2 ABCD
+0.5:ok: beginswith 2 B cset 1 ABCD
+0.5:ok: beginswith 2 B3 cset 1 ABCD
+0:spatne: contains 3 3 cset 1 ABCD
+0:spatne: -d :, icol 2
+0.2:ok: -d :, acol
+0:spatne: -d :, dcol 1
+0:spatne: csum 3 1 2
+0:spatne: cavg 3 1 2
+0:spatne: cmin 3 1 2
+0:spatne: cmax 3 1 2
+0:spatne: ccount 3 1 2
+0:spatne: cseq 1 3 1
+0:spatne: rseq 1 1 3 1
+0:spatne: rsum 1 1 2
+0:spatne: ravg 1 1 2
+0:spatne: rmin 1 1 2
+0:spatne: rmax 1 1 2
+0:spatne: rcount 1 1 2
+0:chyba: reakce na neocekavane argumenty
+0:chyba: reakce na malo argumentu
+0.2:ok: reakce na spatne argumenty
+
+====== Log z prekladu =============
+Ok
+
+====== Analyza kodu ===============
+-2: pouzito goto
+-0.5: globalni promenne
+#    sheet.c:8: delimetr
+#    sheet.c:9: delka_delim
+#    sheet.c:10: prvni_radek_sloupec
+
+====== Log z jednotlivych testu ===
+0.5:ok: arow
+0.5:ok: irow 1
+0.5:ok: drow 1
+0.5:ok: drows 2 3
+0.5:ok: icol 1
+0.5:ok: acol
+0.5:ok: dcol 1
+0.5:ok: dcols 2 3
+0.5:ok: cset 1 X
+0.5:ok: tolower 2
+0.5:ok: toupper 3
+0:spatne: copy 1 3
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_zdt4    2020-11-25 13:35:40.647253000 +0100
+#   +++ test_zdt4    2020-11-25 14:25:49.427957000 +0100
+#   @@ -1,3 +1,3 @@
+#   -A1 B1 A1
+#   -a2 b2 a2
+#   -A3 B3 A3
+#   +A1 B1 A1 kx�
+#   +a2 b2 a2 kx�
+#   +A3 B3 A3 kx�
+0:spatne: swap 1 3
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_zdt5    2020-11-25 13:35:40.648242000 +0100
+#   +++ test_zdt5    2020-11-25 14:25:49.442156000 +0100
+#   @@ -1,3 +1,3 @@
+#   -C1 B1 A1
+#   -C2 b2 a2
+#   -c3 B3 A3
+#   +C1 B1 A1 ۔�
+#   +C2 b2 a2 ۔�
+#   +c3 B3 A3 ۔�
+0:spatne: move 3 1
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_zdt6    2020-11-25 13:35:40.649288000 +0100
+#   +++ test_zdt6    2020-11-25 14:25:49.455941000 +0100
+#   @@ -1,3 +1,3 @@
+#   -C1 A1 B1
+#   -C2 a2 b2
+#   -c3 A3 B3
+#   +C1 A1 B1C1
+#   +C2 a2 b2C2
+#   +c3 A3 B3c3
+0.5:ok: move 1 3
+0:spatne: move 2 2
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_zdt8    2020-11-25 13:35:40.651349000 +0100
+#   +++ test_zdt8    2020-11-25 14:25:49.480673000 +0100
+#   @@ -1,3 +1,3 @@
+#   -A1 B1 C1
+#   -a2 b2 C2
+#   -A3 B3 c3
+#   +A1B1 C1
+#   +a2b2 C2
+#   +A3B3 c3
+0.4:ok: int 1
+0.4:ok: round 2
+0:spatne: int 2
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_zdn3    2020-11-25 13:35:40.642113000 +0100
+#   +++ test_zdn3    2020-11-25 14:25:49.516740000 +0100
+#   @@ -1,3 +1,3 @@
+#   -1 0 0.5
+#   -2 0 10.0
+#   -3 -1 7.5
+#   +1 0 0 �/k�
+#   +2 -0 10 �/k�
+#   +3 -1 7 �/k�
+0:spatne: round 3
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_zdn4    2020-11-25 13:35:40.643116000 +0100
+#   +++ test_zdn4    2020-11-25 14:25:49.530164000 +0100
+#   @@ -1,3 +1,3 @@
+#   -1 0.5 1
+#   +1 0.5 1 �7y�
+#    2 -0.7 10
+#   -3 -1.5 8
+#   +3 -1.5 8 �7y�
+0.5:ok: rows 1 2 cset 2 ABCD
+0.5:ok: beginswith 2 B cset 1 ABCD
+0.5:ok: beginswith 2 B3 cset 1 ABCD
+0:spatne: contains 3 3 cset 1 ABCD
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_srt4    2020-11-25 13:35:40.607558000 +0100
+#   +++ test_srt4    2020-11-25 14:25:49.582315000 +0100
+#   @@ -1,3 +1,3 @@
+#    A1 B1 C1
+#    a2 b2 C2
+#   -ABCD B3 c3
+#   +A3 B3 c3
+0:spatne: -d :, icol 2
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_delim1    2020-11-25 13:35:40.601127000 +0100
+#   +++ test_delim1    2020-11-25 14:25:49.597840000 +0100
+#   @@ -1,3 +1,3 @@
+#   -A1::B1:C1
+#   -a2::b2:C2
+#   -A3::B3:c3
+#   +A1::B1,C1
+#   +a2::b2,C2
+#   +A3::B3,c3
+0.2:ok: -d :, acol
+0:spatne: -d :, dcol 1
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_delim3    2020-11-25 13:35:40.603258000 +0100
+#   +++ test_delim3    2020-11-25 14:25:49.627006000 +0100
+#   @@ -1,3 +1,3 @@
+#   -B1:C1
+#   -b2:C2
+#   -B3:c3
+#   +B1,C1
+#   +b2,C2
+#   +B3,c3
+0:spatne: csum 3 1 2
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_zdec1    2020-11-25 13:35:40.627839000 +0100
+#   +++ test_zdec1    2020-11-25 14:25:49.635015000 +0100
+#   @@ -1,3 +0,0 @@
+#   -1 0.5 1.5
+#   -2 -0.7 1.3
+#   -3 -1.5 1.5
+0:spatne: cavg 3 1 2
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_zdec2    2020-11-25 13:35:40.628980000 +0100
+#   +++ test_zdec2    2020-11-25 14:25:49.649957000 +0100
+#   @@ -1,3 +0,0 @@
+#   -1 0.5 0.75
+#   -2 -0.7 0.65
+#   -3 -1.5 0.75
+0:spatne: cmin 3 1 2
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_zdec3    2020-11-25 13:35:40.630087000 +0100
+#   +++ test_zdec3    2020-11-25 14:25:49.662856000 +0100
+#   @@ -1,3 +0,0 @@
+#   -1 0.5 0.5
+#   -2 -0.7 -0.7
+#   -3 -1.5 -1.5
+0:spatne: cmax 3 1 2
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_zdec4    2020-11-25 13:35:40.631102000 +0100
+#   +++ test_zdec4    2020-11-25 14:25:49.675846000 +0100
+#   @@ -1,3 +0,0 @@
+#   -1 0.5 1
+#   -2 -0.7 2
+#   -3 -1.5 3
+0:spatne: ccount 3 1 2
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_zdec5    2020-11-25 13:35:40.632153000 +0100
+#   +++ test_zdec5    2020-11-25 14:25:49.688158000 +0100
+#   @@ -1,3 +0,0 @@
+#   -1 0.5 2
+#   -2 -0.7 2
+#   -3 -1.5 2
+0:spatne: cseq 1 3 1
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_zdec6    2020-11-25 13:35:40.633079000 +0100
+#   +++ test_zdec6    2020-11-25 14:25:49.701144000 +0100
+#   @@ -1,3 +0,0 @@
+#   -1 2 3
+#   -1 2 3
+#   -1 2 3
+0:spatne: rseq 1 1 3 1
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_zder1    2020-11-25 13:35:40.634055000 +0100
+#   +++ test_zder1    2020-11-25 14:25:49.715472000 +0100
+#   @@ -1,3 +0,0 @@
+#   -1 0.5 0.5
+#   -2 -0.7 10.0
+#   -3 -1.5 7.5
+0:spatne: rsum 1 1 2
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_zder2    2020-11-25 13:35:40.635099000 +0100
+#   +++ test_zder2    2020-11-25 14:25:49.728608000 +0100
+#   @@ -1,3 +0,0 @@
+#   -1 0.5 0.5
+#   -2 -0.7 10.0
+#   -3 -1.5 7.5
+0:spatne: ravg 1 1 2
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_zder3    2020-11-25 13:35:40.636113000 +0100
+#   +++ test_zder3    2020-11-25 14:25:49.743554000 +0100
+#   @@ -1,3 +0,0 @@
+#   -1 0.5 0.5
+#   -2 -0.7 10.0
+#   -1.5 -1.5 7.5
+0:spatne: rmin 1 1 2
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_zder4    2020-11-25 13:35:40.637132000 +0100
+#   +++ test_zder4    2020-11-25 14:25:49.757628000 +0100
+#   @@ -1,3 +0,0 @@
+#   -1 0.5 0.5
+#   -2 -0.7 10.0
+#   -1 -1.5 7.5
+0:spatne: rmax 1 1 2
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_zder5    2020-11-25 13:35:40.638108000 +0100
+#   +++ test_zder5    2020-11-25 14:25:49.771805000 +0100
+#   @@ -1,3 +0,0 @@
+#   -1 0.5 0.5
+#   -2 -0.7 10.0
+#   -2 -1.5 7.5
+0:spatne: rcount 1 1 2
+# Neodpovida vzorovemu vystupu
+#   --- testdata/test_zder6    2020-11-25 13:35:40.639116000 +0100
+#   +++ test_zder6    2020-11-25 14:25:49.785022000 +0100
+#   @@ -1,3 +0,0 @@
+#   -1 0.5 0.5
+#   -2 -0.7 10.0
+#   -2 -1.5 7.5
+0:chyba: reakce na neocekavane argumenty
+0:chyba: reakce na malo argumentu
+0.2:ok: reakce na spatne argumenty
+#   spatne zadany parametr pro icol

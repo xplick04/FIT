@@ -1,0 +1,23 @@
+.myButton {
+	background-color: #77C9D4;
+	border: none;
+}
+
+.myButton:hover {
+	background-color: #40818A;
+}
+
+.myButtonInv {
+	background-color: white;
+	color: #40818A;
+	border-color: #40818A;
+}
+
+.myButtonInv:hover {
+	background-color: #40818A;
+	border-color: #40818A;
+}
+
+.myButtonErr {
+	background-color: red;
+}
