@@ -1,0 +1,40 @@
+5:celkem bodu za projekt
+#-- automaticke hodnoceni -----------------------------
+= make
+:ok:make
+= prepare tests: resources
+:kontrola syntaxe vystupu => check_syntax.out
+Alarm clock
+#:0:xplick04: chyba pri spusteni, mozne priciny:
+#:chybny soubor, timeout 5s nebo limit velikosti souboru
+= base_* : zakladni testy
+:ok:test_a_base_counter: navratovy kod je 0
+0:fail:test_a_base_counter
+1:ok:test_b_base_santa: posloupnost Santa ok
+1:ok:test_c_base_rd: posloupnost RD ok
+0:fail:test_d_base_elf: chyba v posloupnosti u Elf (vizte soubor Elf-1-*)
+= Slozitejsi testy
+:test_e_sync_elf_santa: zakladni posloupnost (viz 1-sync1.log): chyba v synchronizaci
+0:fail:test_e_sync_elf_santa: synchronizace elfu a Santy
+:ok:test_g_counter: navratovy kod je 0
+0:fail:test_g_counter
+1:ok:test_h_santa: posloupnost Santa ok
+1:ok:test_i_rd: posloupnost RD ok
+0:fail:test_j_elf: chyba v posloupnosti u Elf (vizte soubor Elf-1-*)
+:test_k_sync: Santa a Elffove (viz 1-sync1.log): chyba v synchronizaci
+0:fail:test_k_sync: synchronizace elfove+Santy a Sobu+Santa
+= specialni testy
+:test_n_sync_sleep: zakladni posloupnost (viz 1-sync1.log): chyba v synchronizaci
+0:fail:test_n_sync_sleep: synchronizace (castejsi prepinani procesu)
+:test_o_sync_nosleep: zakladni posloupnost (viz 1-sync1.log): chyba v synchronizaci
+0:fail:test_o_sync_nosleep: synchronizace (sleep -> 0)
+= test spravneho ukonceni pri chybe
+1:ok:test_q_error_1: osetreni chybneho vstupu
+= resources
+Alarm clock
+#:0:xplick04: chyba pri spusteni, mozne priciny:
+#:chybny soubor, timeout 5s nebo limit velikosti souboru
+0: zablokovani nebo segmentation fault
+#------------------------------------------------------
+5:celkove score (max pro hodnoceni 15)
+5:celkem bodu za projekt

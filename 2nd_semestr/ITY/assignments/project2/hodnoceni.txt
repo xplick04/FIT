@@ -1,5 +1,0 @@
-celkem bodu: 12.8/15
-Komentář učitele k hodnocení:
--1:odkazy preklad
--1:neovlnkovane --> 50:a výrazů v plynulém tex
--0.2:diferencial

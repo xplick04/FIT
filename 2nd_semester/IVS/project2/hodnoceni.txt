@@ -1,0 +1,56 @@
+project - 42.5/52
+
+Hodnocení Vašeho týmu
+=====================
+
+Plán:
+-----
+stanovení termínů: 1
+rozdělení práce a přidělení úkolů: 3
+komunikační kanály: 2
+pravidla pro komunikaci: 1
+systém pro správu verzí: 1
+zamyšlení: 0
+kompletnost plánu: 1
+bonusový bod: 0
+-------------------------------------
+plán celkem (po případném oříznutí): 9
+pro Vás (člena týmu): 3
+
+Produkt:
+--------
+vytvořený a přístupný repozitář: 8
+korektní odevzdání: 5
+matematická knihovna: 12
+testy k matematické knihovně: 10
+funkční program: 16
+instalátor a odinstalátor: 8
+nápověda: 8
+komentáře a generovaná dokumentace: 15,3
+uživatelská příručka: 11
+Makefile: 8
+debugging: 0
+mockup: 6
+profiling: 16
+-------------------------------------
+produkt celkem: 123,3
+pro Vás (člena týmu): 31
+
+Vaše hodnocení v procentech: 100
+
+Hodnocení v procentech, které jste si přidělovali sami, se aplikovalo se při výpočtu celkového součtu (viz níže) na položky dle zadání.
+-------------------------------------
+
+-------------------------------------
+Vyhodnocení rozdílů mezi plánem a skutečností: 0 (pro Vás 0)
+Používání repozitáře: 1,5
+Bonusové body: -
+Zhodnocení projektu (xloginNN_problemy.txt): 2
+Obhajoby: 5
+PGO (bonus): -
+
+Přidělení bonusových bodů bylo zdůvodněno na obhajobách, v poznámkách k hodnocení či individuálně.
+
+-------------------------------------
+
+Celkem máte: 42,5 bodů

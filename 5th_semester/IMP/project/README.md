@@ -1,0 +1,15 @@
+# Project title:
+S - ARM-FITkit3: Real Time Clock (RTC) Alarm Clock
+
+## Description:
+Through the supervisor, borrow 1 unit of the FITkit 3 platform. Equipment for the project solution will begin to be issued approximately mid-October 2022 (after the close of sign-ups for projects - approximately after October 17, 2022). The loan will be confirmed by an entry on the loan sheet (1 piece = 1 entry); the equipment can also be borrowed indirectly if an intermediary can be found who will take on the burden of the loan.
+Learn the principles of creating embedded applications based on the Kinetis K60 microcontroller (with ARM Cortex-M4 core) from Freescale in the Kinetis Design Studio (KDS) or MCUXpresso environment.
+In C (and beyond), create a project implementing an embedded "digital alarm clock" application using the Real Time Clock (RTC) module available on the Kinetis K60 chip from the FITkit 3 platform board. The application shall, according to the user's requirements, allow 1) setting the time for the clock and the alarm, 2) enabling/disabling the wake-up function, 3) sound and light signaling during wake-up, with the user being able to choose one of at least three built-in sound melodies and one of at least three built-in light signaling modes, 4) repeating the wake-up attempt with a configurable number of attempts and time interval between attempts.
+
+Create clear documentation on the preparation, implementation method, functionality and features of the project solution. In case of using (not prohibited by specifying) supporting resources (e.g. libraries or abstraction layers), put in context the API used, the properties of the embedded application/platform and the state, control, etc. registers and platform bits related (i.e. controlled, monitored) to this API.
+Submit the solution (the project, excluding the binaries buildable from the source files in the project, and the documentation in both source and binary, i.e. PDF, form) via IS in a single ZIP archive.
+Presentation of the solution is implicitly assumed in person, with subsequent return of the loaned equipment. If, due to pandemic or other "force majeure" circumstances, in-person demonstration/return is not possible, please prepare for an alternative option - e.g. online/remote demonstration via Microsoft Teams, Google Meet, etc., creation of a short video demonstrating the solution, return of equipment at the return desk, on the occasion of a test, etc.
+The evaluation of the project will be based on the rating of components E, F, Q, P, D of the evaluation key. Once the project is completed, use this key to self-evaluate the E, F, Q, P, D components and the resulting score (e.g., place the result of the self-evaluation at the end of the project documentation) - this will provide valuable feedback and information about your expected project rating.
+
+# Project evaluation:
+project - 12.3/14

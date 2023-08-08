@@ -1,0 +1,48 @@
+# Zadání
+
+Vytvořte kalkulačku s následujícími funkcemi:
+
+- Základní matematické operace (+, -, *, /)
+- Faktoriál
+- Umocňování s přirozenými exponenty (exponenty jsou přirozená čísla)
+- Obecná odmocnina
+- Jedna další volitelná funkce
+
+## Požadavky na program
+
+- Program může být vytvořen v libovolném programovacím jazyce.
+- Kalkulačka se skládá z knihovny obsahující matematické funkce (včetně základních operací jako +, -, *, atd.), která bude použita pro tvorbu grafického uživatelského rozhraní.
+- Uživatelské rozhraní musí obsahovat nápovědu.
+- Kalkulačku lze ovládat klávesnicí, alespoň s minimálními základními operacemi.
+- K programu bude přiložena uživatelská i programová dokumentace.
+- V uživatelské dokumentaci bude zahrnut postup instalace a odinstalace programu pomocí instalátoru (odinstalátoru).
+- K dispozici bude také návod pro manuální (od)instalaci, včetně postupu překladu ze zdrojových kódů, tvorby zástupců (ikonek) a dalších akcí, které provádí instalátor.
+- Program bude dodáván s otevřenými zdrojovými texty pod licencí GNU GPL verze 1, 2 nebo 3.
+
+# Doplňující podmínky
+
+- Preferovanou (ale nikoliv striktně vyžadovanou) platformou je Linux.
+- Máte k dispozici virtuální prostředí, na kterých budeme projekt hodnotit (viz níže). Je nutné, aby program alespoň na jednom z testovacích virtuálních prostředí bez problémů fungoval vč. instalace a odinstalace. V dokumentaci a v README musí být uvedeno, které prostředí jste zvolili a jak v něm projekt zprovoznit.
+- Pro správu verzí bude využit GIT, Mercurial či Bazaar. Povolené hostingy jsou ivs.fit.vutbr.cz, github.com, gitlab.com, bitbucket.com a merlin.fit.vutbr.cz (mimo sít VUT může být nutné využít VPN; před vytvořením repozitáře čtěte celé pokyny pro odevzdání!). Jiný systém či hosting pro správu verzí pouze po předchozí konzultaci. S CVS či SVN nelze získat plný počet bodů za projekt.
+- Testy pro matematickou knihovnu vytváříme dříve než program podle konceptu Test-driven development.
+- K matematické knihovně i k celému programu musí být vygenerována programová dokumentace. Preferovaný nástroj je Doxygen.
+- Součástí bude Makefile pro kompilaci projektu, který bude obsahovat alespoň tyto cíle:
+
+  - `all` (přeloží projekt - včetně programu pro profiling)
+  - `pack` (zabalí projekt tak, aby mohl být odevzdán)
+  - `clean` (smaže všechny soubory, co nemají být odevzdány)
+  - `test` (spustí testy matematické knihovny)
+  - `doc` (spustí generování dokumentace)
+  - `run` (spustí program)
+  - `profile` (spustí překlad programu pro výpočet směrodatné odchylky na profiling)
+  - Při spuštění make bez uvedení cíle se provede make all.
+
+
+## Pokyny pro Makefile
+
+- Při spuštění příkazu `make` bez uvedení cíle se provede `make all`.
+- Makefile bude v obou výše uvedených případech určen pro GNU Make (pro Windows například [zde](https://www.gnu.org/software/make/)). Makefile pro Windows tedy musí využívat GNU make, ale příkazovou řádku Windows (takže například `del` místo `rm`). Výjimky mohou být povoleny cvičícím v dobře odůvodněných případech, ale neměl by existovat důvod k jejich použití (z Makefile lze spouštět i jiné nástroje, např. Maven).
+- Pokud to není nezbytně nutné (např. pro instalační cesty jako `/usr/bin`), Makefile nebude obsahovat absolutní cesty.
+- Bude-li to možné, Makefile nebude obsahovat jméno ani jednoho ze zdrojových souborů.
+- Kalkulačku je povinné otestovat s využitím debugovacího nástroje - odevzdá se snímek obrazovky debuggeru v matematické knihovně.
+- K programu bude vytvořen mockup uživatelského rozhraní další verze kalkulačky (plánované do budoucna), která bude obsahovat funkce jako vědecký mód, vykreslování grafů a další potenciálně užitečné funkce (např. výpočet BMI, stopky, statistické funkce, atd.). Musí být jasné, jak bude nová verze vypadat a jak bude fungovat. V případě potřeby může být vytvořeno více mockupů.
