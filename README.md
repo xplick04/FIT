@@ -12,4 +12,4 @@
 
 [Signal processing using Fourier transform](https://github.com/xplick04/FIT/tree/master/3rd_semester/ISS/project)
 
-## Recent projects are stored in a private repository
+### Recent projects are stored in a private repository
